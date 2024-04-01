@@ -5,10 +5,10 @@ def shutdown_computer():
     system = platform.system()
     if system == "Windows":
         # Windows için shutdown komutunu kullan
-        subprocess.run(["shutdown", "/s", "/t", "1"], shell=True)
+        subprocess.run(["shutdown", "/s", "/t", "1"])
     elif system == "Linux":
         # Linux için shutdown komutunu kullan
-        subprocess.run(["sudo", "shutdown", "-h", "now"], shell=True)
+        subprocess.run(["sudo", "shutdown", "-h", "now"])
     else:
         print("Bu işletim sistemi desteklenmiyor.")
 
