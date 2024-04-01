@@ -1,3 +1,5 @@
+import tkinter as tk
+from tkinter import messagebox
 import platform
 import subprocess
 
@@ -10,7 +12,20 @@ def shutdown_computer():
         # Linux için shutdown komutunu kullan
         subprocess.run(["sudo", "shutdown", "-h", "now"])
     else:
-        print("Bu işletim sistemi desteklenmiyor.")
+        messagebox.showinfo("Hata", "Bu işletim sistemi desteklenmiyor.")
 
-if __name__ == "__main__":
-    shutdown_computer()
+def on_shutdown_button_click():
+    result = messagebox.askquestion("Kapatma İşlemi", "Bilgisayarı kapatmak istediğinizden emin misiniz?")
+    if result == "yes":
+        shutdown_computer()
+
+# Ana pencere oluşturma
+root = tk.Tk()
+root.title("Bilgisayar Kapatma Uygulaması")
+
+# Kapatma butonu oluşturma
+shutdown_button = tk.Button(root, text="Bilgisayarı Kapat", command=on_shutdown_button_click)
+shutdown_button.pack(pady=20)
+
+# Pencereyi gösterme
+root.mainloop()
